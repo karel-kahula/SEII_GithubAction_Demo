@@ -1,0 +1,22 @@
+name: sa-scan
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  Scan-Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0    
+    - name: Perform Scan
+      uses: AppThreat/sast-scan-action@master
+      with:
+        type: "java"
+    - name: Upload Report
+      uses: actions/upload-artifact@v1
+      with:
+        name: reports
+        path: reports
