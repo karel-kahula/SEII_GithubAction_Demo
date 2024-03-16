@@ -1,6 +1,8 @@
-name: sa-scan
+name: Static Analysis Scan
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
